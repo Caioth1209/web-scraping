@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.json())
 
-app.post("/scrape", async (req, res) => {
+app.post("/referencias", async (req, res) => {
 
   const { temaTcc } = req.body
 

@@ -5,11 +5,13 @@ const os = require("os");
 const { generateSearchTerms } = require("./src/generateSearchTerms");
 const { uploadFile } = require("./src/uploadFile");
 const { generateFile } = require("./src/generateFile");
+const cors = require('cors')
 const app = express();
 
 const PORT = process.env.PORT || 4000;
 
 app.use(express.json())
+app.use(cors())
 
 app.post("/referencias", async (req, res) => {
 

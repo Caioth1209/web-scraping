@@ -3,12 +3,6 @@ require("dotenv").config();
 
 const scrapeLogic = async (term) => {
   const browser = await puppeteer.launch({
-    args: [
-      "--disable-setuid-sandbox",
-      "--no-sandbox",
-      "--single-process",
-      "--no-zygote",
-    ],
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
@@ -17,9 +11,7 @@ const scrapeLogic = async (term) => {
   try {
     const page = await browser.newPage();
 
-    await page.goto(`https://semanticscholar.org/search?q=${encodeURIComponent(term.trim())}`, {
-      waitUntil: 'networkidle2'
-    });
+    await page.goto(`https://semanticscholar.org/search?q=${encodeURIComponent(term.trim())}`);
 
     await page.waitForSelector('.result-page');
 

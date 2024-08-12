@@ -4,7 +4,7 @@ const path = require('path');
 const os = require("os");
 const { generateSearchTerms } = require("./src/generateSearchTerms");
 const { uploadFile } = require("./src/uploadFile");
-const { generateFile } = require("./src/generateFIle");
+const { generateFile } = require("./src/generateFile");
 const app = express();
 
 const PORT = process.env.PORT || 4000;

@@ -8,7 +8,7 @@ const app = express();
 
 const PORT = process.env.PORT || 4000;
 
-app.get("/scrape", async (req, res) => {
+app.post("/scrape", async (req, res) => {
 
   const { temaTcc } = req.body
 

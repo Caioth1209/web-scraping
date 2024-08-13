@@ -20,7 +20,6 @@ const scrapeLogic = async (term) => {
 
     for (let item of items.slice(0, 5)) {
       let titleElement = await item.$('a');
-      let title = titleElement ? await page.evaluate(el => el.innerText, titleElement) : 'No title';
       let link = titleElement ? await page.evaluate(el => el.href, titleElement) : 'No link';
 
       let citeButton = await item.$('[data-test-id="cite-link"]');
@@ -38,7 +37,7 @@ const scrapeLogic = async (term) => {
           let citationElement = await page.$('cite.formatted-citation.formatted-citation--style-apa');
           let citationText = citationElement ? await page.evaluate(el => el.innerText, citationElement) : 'No citation';
 
-          results.push({ title, link, citationText });
+          results.push({ link, citationText });
 
           await page.click('.cl-modal__close-section > button');
         }

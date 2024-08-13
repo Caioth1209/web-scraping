@@ -26,6 +26,7 @@ const scrapeLogic = async (term) => {
       if (citeButton) {
         await citeButton.click();
 
+
         await page.waitForSelector('.tabs.flex-row.cite-modal__tabs');
 
         let thirdTabButton = await page.$('.tabs.flex-row.cite-modal__tabs li:nth-child(3) button');

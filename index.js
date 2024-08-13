@@ -35,7 +35,7 @@ app.post("/referencias", async (req, res) => {
     await generateFile(allReferences, filePath);
     const file = await uploadFile(filePath)
 
-    res.send({ fileId: file });
+    return res.send({ fileId: file });
   } catch (error) {
     res.send({ error: error.message })
   }

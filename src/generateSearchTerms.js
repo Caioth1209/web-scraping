@@ -5,11 +5,11 @@ async function generateSearchTerms(userInput) {
     const prompt = `
     Gerar 20 (vinte) termos de pesquisa para o tema:${userInput}
     Importante: NÃO faça nenhum tipo de comentario, seu trabalho é unicamente gerar os 20 termos de pesquisa
-    Importante: Use [-] entre cada termo para facilitar o processamento posterior
+    Importante: Use \\n entre cada termo para facilitar o processamento posterior
     `;
 
     const response = await openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4o-mini',
         messages: [{ role: "user", content: prompt }],
         temperature: 0.2,
         max_tokens: 4096,

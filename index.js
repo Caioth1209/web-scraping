@@ -21,11 +21,12 @@ app.post("/referencias", async (req, res) => {
     const tempDir = os.tmpdir();
     const filePath = path.join(tempDir, 'referencias.pdf');
 
+
     const terms = await generateSearchTerms(temaTcc)
 
     let allReferences = [];
     for (const term of terms) {
-      const references = await scrapeLogic(term);
+      const references = await scrapeLogic(term,);
       allReferences = allReferences.concat(references);
 
       // Pausa de 10 segundos entre as solicitações para evitar bloqueios

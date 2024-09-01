@@ -14,7 +14,6 @@ const scrapeLogic = async (term) => {
 
     await page.goto(`https://bdtd.ibict.br/vufind/Search/Results?lookfor=${term.trim()}&type=AllFields`);
 
-    // Envolva o código que pode gerar um TimeoutError em um bloco try/catch separado
     let results = [];
     try {
       await page.waitForSelector('.mainbody.right', { timeout: 30000 });

@@ -14,7 +14,7 @@ function generateFile(references, filePath) {
         });
 
         references.forEach((ref) => {
-            fileStream.write(`Link: ${ref.link.trim()}\nTitle: ${ref.title.trim()}\nAuthor: ${ref.author.trim()}`);
+            fileStream.write(`Link: ${ref.link}\nTitle: ${ref.title}\nAuthor: ${ref.author}`);
             fileStream.write('------------------------\n');
         });
 

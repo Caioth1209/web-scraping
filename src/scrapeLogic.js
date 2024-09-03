@@ -33,14 +33,14 @@ const scrapeLogic = async (term) => {
       }
     } catch (selectorError) {
       console.error('Failed to find result page:', selectorError);
-      results = [{ link: '', citationText: '' }];
+      results = [{ link: '', title: '', author: '' }];
     }
 
     console.log(`Referências obtidas para o termo "${term.trim()}":`, results);
     return results;
   } catch (e) {
     console.error('An unexpected error occurred:', e);
-    return [{ link: '', citationText: '' }];
+    return [{ link: '', title: '', author: '' }];
   } finally {
     await browser.close();
   }

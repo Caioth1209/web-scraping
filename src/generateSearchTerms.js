@@ -19,7 +19,7 @@ async function generateSearchTerms(tema) {
     });
 
     const terms = response.choices[0].message.content;
-    const content = terms.split('\n').filter(term => term.trim() !== '');
+    const content = terms.split(terms.includes('\\n') ? '\\n' : '\n').filter(term => term.trim() !== '');
     console.log('Termos de pesquisa gerados:', content);
     return content;
 }

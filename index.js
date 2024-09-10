@@ -18,6 +18,8 @@ app.post("/referencias", async (req, res) => {
   const { temaTcc } = req.body
 
   try {
+
+    if (!temaTcc) return res.status(500).send('Dados Invalidos')
     const tempDir = os.tmpdir();
     const filePath = path.join(tempDir, 'referencias.pdf');
 
@@ -53,6 +55,9 @@ app.post("/referencias", async (req, res) => {
       // Pausa de 10 segundos entre as solicitações para evitar bloqueios
       await new Promise(resolve => setTimeout(resolve, 2000));
     }
+
+    console.log(allReferences.length);
+
 
     await generateFile(allReferences, filePath);
     const file = await uploadFile(filePath)

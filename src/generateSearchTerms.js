@@ -1,7 +1,6 @@
 const openai = require("./service/openai");
 
 async function generateSearchTerms(tema) {
-    console.log('Gerando termos de pesquisa...');
     const prompt = `
     Gerar 15 (quinze) termos de pesquisa para o tema: ${tema}
     Importante: NÃO faça nenhum tipo de comentario, seu trabalho é unicamente gerar os 15 termos de pesquisa
@@ -20,7 +19,6 @@ async function generateSearchTerms(tema) {
 
     const terms = response.choices[0].message.content;
     const content = terms.split(terms.includes('\\n') ? '\\n' : '\n').filter(term => term.trim() !== '');
-    console.log('Termos de pesquisa gerados:', content);
     return content;
 }
 

@@ -48,16 +48,21 @@ app.post("/referencias", async (req, res) => {
     ]*/
 
     let allReferences = [];
+    const titlesSet = new Set();
+
     for (const term of terms) {
-      const references = await scrapeLogic(term,);
-      allReferences = allReferences.concat(references);
+      const references = await scrapeLogic(term);
+
+      for (const reference of references) {
+        if (!titlesSet.has(reference.title)) {
+          titlesSet.add(reference.title);
+          allReferences.push(reference);
+        }
+      }
 
       // Pausa de 10 segundos entre as solicitações para evitar bloqueios
       await new Promise(resolve => setTimeout(resolve, 2000));
     }
-
-    console.log(allReferences.length);
-
 
     await generateFile(allReferences, filePath);
     const file = await uploadFile(filePath)

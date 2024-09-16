@@ -42,7 +42,6 @@ const scrapeLogic = async (term) => {
       results = [{ link: '', title: '', author: '' }];
     }
 
-    console.log(results);
     return results;
   } catch (e) {
     console.error('An unexpected error occurred:', e);
